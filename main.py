@@ -4,8 +4,7 @@ import requests
 from PIL import Image
 from io import BytesIO
 
-base_url_500 = "https://image.tmdb.org/t/p/w500"
-base_url_1200 = "https://image.tmdb.org/t/p/w1200"
+BASE_URL = "https://image.tmdb.org/t/p/w"
 
 class Movie:
     def __init__(self, id, title, release_date, img_path) -> None:
@@ -13,8 +12,8 @@ class Movie:
         self.title = title
         self.release_date = release_date
         self.img_path = img_path
-        self.img_url_500 = base_url_500 + self.img_path
-        self.img_url_1200 = base_url_1200 + self.img_path
+        self.img_url_500 = BASE_URL + '500' + self.img_path
+        self.img_url_1200 = BASE_URL + '1200' + self.img_path
 
     def display(self):
         print(f"{self.id} - {self.title}")
@@ -29,7 +28,6 @@ def compare_release_dates(movie1, movie2):
     date1 = datetime.strptime(movie1.release_date, "%Y-%m-%d")
     date2 = datetime.strptime(movie2.release_date, "%Y-%m-%d")
 
-    
     if date1 > date2:
         return movie1
     else:
