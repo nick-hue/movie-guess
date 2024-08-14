@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Guessing Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Which movie was released later?</h1>
+    <p>Current Score: {{ score }}</p>
+
+    <form method="POST">
+        <div>
+            <img src="{{ movies[0]['poster_path'] }}" alt="{{ movies[0]['title'] }}" style="width:200px;">
+            <button type="submit" name="guess" value="0">{{ movies[0]['title'] }}</button>
+        </div>
+        <div>
+            <img src="{{ movies[1]['poster_path'] }}" alt="{{ movies[1]['title'] }}" style="width:200px;">
+            <button type="submit" name="guess" value="1">{{ movies[1]['title'] }}</button>
+        </div>
+    </form>
+</body>
+</html>

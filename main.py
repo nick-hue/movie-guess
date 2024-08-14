@@ -127,6 +127,7 @@ def get_all_movies(movies_amount):
 
 if __name__ == "__main__":
     movies_amount = 500
+    print(f"Main is running...")
     all_movies = get_all_movies(500)
     
     print(f"{len(all_movies)} movies fetched.")
