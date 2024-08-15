@@ -7,18 +7,19 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Which movie was released later?</h1>
-    <p>Current Score: {{ score }}</p>
+    <div class="header">
+        <h1>Which movie was released later?</h1>
+        <p>Current Score: {{ score }}</p>
+    </div>
 
-    <form method="POST">
-        <div>
-            <img src="{{ movies[0]['poster_path'] }}" alt="{{ movies[0]['title'] }}" style="width:200px;">
-            <button type="submit" name="guess" value="0">{{ movies[0]['title'] }}</button>
-        </div>
-        <div>
-            <img src="{{ movies[1]['poster_path'] }}" alt="{{ movies[1]['title'] }}" style="width:200px;">
-            <button type="submit" name="guess" value="1">{{ movies[1]['title'] }}</button>
-        </div>
+    <form method="POST" class="movie-container">
+        <button type="submit" name="guess" value="0" class="movie-item">
+            <img src="{{ movies[0]['img_url_500'] }}" alt="{{ movies[0]['title'] }}" class="movie-img">
+        </button>
+        <button type="submit" name="guess" value="1" class="movie-item">
+            <img src="{{ movies[1]['img_url_500'] }}" alt="{{ movies[1]['title'] }}" class="movie-img">
+        </button>
     </form>
+
 </body>
 </html>

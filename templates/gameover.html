@@ -7,15 +7,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Game Over</h1>
-    <p>Your final score: {{ score }}</p>
-
-    <form action="{{ url_for('save_score') }}" method="POST">
-        <label for="player_name">Enter your name:</label>
-        <input type="text" id="player_name" name="player_name" required>
-        <button type="submit">Save Score</button>
-    </form>
-    <a href="{{ url_for('leaderboard') }}">View Leaderboard</a>
-    <a href="{{ url_for('index') }}">Play Again</a>
+    <div class="container">
+        <h1>Game Over!</h1>
+        <p>Your final score: {{ score }}</p>
+        <a href="{{ url_for('index') }}" class="restart-button">Play Again</a>
+        <a href="{{ url_for('leaderboard') }}" class="leaderboard-button">View Leaderboard</a>
+    </div>
 </body>
 </html>

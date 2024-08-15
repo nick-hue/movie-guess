@@ -3,9 +3,12 @@ from datetime import datetime
 import requests
 from PIL import Image
 from io import BytesIO
+import json
+from dataclasses import dataclass
 
 BASE_URL = "https://image.tmdb.org/t/p/w"
 
+@dataclass
 class Movie:
     def __init__(self, id, title, release_date, img_path) -> None:
         self.id = id 
@@ -18,6 +21,13 @@ class Movie:
     def display(self):
         print(f"{self.id} - {self.title}")
 
+    def toJSON(self):
+        return json.dumps(
+            self,
+            default=lambda o: o.__dict__, 
+            sort_keys=True,
+            indent=4)
+
 def get_random_movies(movies):
     """Randomly select two different movies from the list."""
     movie1, movie2 = random.sample(movies, 2)
@@ -28,10 +38,7 @@ def compare_release_dates(movie1, movie2):
     date1 = datetime.strptime(movie1.release_date, "%Y-%m-%d")
     date2 = datetime.strptime(movie2.release_date, "%Y-%m-%d")
 
-    if date1 > date2:
-        return movie1
-    else:
-        return movie2
+    return movie1 if date1 > date2 else movie2
 
 def play_round(movies, show_images):
     """Play a single round of the game."""
@@ -132,4 +139,4 @@ if __name__ == "__main__":
     
     print(f"{len(all_movies)} movies fetched.")
 
-    play_game(all_movies, show_images=False)
+    play_game(all_movies, show_images=True)

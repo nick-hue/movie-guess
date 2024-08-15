@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #000; /* Set the body background color to black */
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #000; /* Dark background for the header */
+    color: #fff; /* White text for the header */
+}
+
+h1 {
+    color: #fff;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    font-size: 18px;
+    color: #ccc; /* Light gray color for the score text */
+}
+
+.movie-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%; /* Set the container width to 85% of the viewport */
+    margin: 0 auto; /* Center the container horizontally */
+    flex-grow: 1;
+    height: calc(100vh - 80px); /* Adjust height to fill the screen minus the header height */
+}
+
+.movie-item {
+    width: 48%; /* Each image takes up 48% of the container's width */
+    height: 100%;
+    background-color: #111; /* Dark background for each movie item */
+    border: none; /* Remove default button styling */
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.movie-item:focus {
+    outline: none; /* Remove the focus outline */
+}
+
+.movie-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6; /* Lower opacity of the images */
+    transition: opacity 0.3s;
+}
+
+.movie-item:hover .movie-img {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
