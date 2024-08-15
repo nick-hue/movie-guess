@@ -1,4 +1,4 @@
-from main import get_all_movies, Movie
+from demo import get_all_movies, Movie
 from flask import Flask, render_template, request, redirect, url_for, session
 import random
 from datetime import datetime
@@ -12,6 +12,17 @@ def compare_release_dates(movie1: Movie, movie2: Movie) -> Movie:
     date1 = datetime.strptime(movie1.release_date, "%Y-%m-%d")
     date2 = datetime.strptime(movie2.release_date, "%Y-%m-%d")
     return movie1 if date1 > date2 else movie2
+
+def load_leaderboard():
+    with open("temp_leaderboard.txt", "r") as f:
+        data = f.readlines()
+    return [{'name':player.split("-")[0], 'score':player.split("-")[1]} for player in data]
+
+
+def update_leaderboard(data):
+    # {'name': player_name, 'score': score}
+    with open("temp_leaderboard.txt", "a") as f:
+        f.write(f"{data['name']}-{data['score']}\n")
 
 @app.route('/')
 def index():
@@ -49,18 +60,24 @@ def game():
 def game_over():
     return render_template('gameover.html', score=session['score'])
 
-@app.route('/save_score', methods=['POST'])
-def save_score():
-    # Logic to save the score, for example in a database or file
+@app.route('/submit_score', methods=['POST'])
+def submit_score():
     player_name = request.form['player_name']
-    # Save player_name and session['score'] to leaderboard (not implemented here)
+    score = session.get('score', 0)
+    
+    # Add the name and score to the leaderboard
+    update_leaderboard({'name': player_name, 'score': score})
+        
     return redirect(url_for('leaderboard'))
+
 
 @app.route('/leaderboard')
 def leaderboard():
     # Logic to display the leaderboard (not implemented here)
-    leaderboard_data = []  # Replace with actual leaderboard data
-    return render_template('leaderboard.html', leaderboard=leaderboard_data)
+    leaderboard_data = load_leaderboard()
+    sorted_leaderboard = sorted(leaderboard_data, key=lambda x: int(x['score'].strip()), reverse=True)
+
+    return render_template('leaderboard.html', leaderboard=sorted_leaderboard)
 
 if __name__ == '__main__':
     app.run(debug=True)

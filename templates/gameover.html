@@ -10,6 +10,13 @@
     <div class="container">
         <h1>Game Over!</h1>
         <p>Your final score: {{ score }}</p>
+        
+        <form action="{{ url_for('submit_score') }}" method="POST">
+            <label for="player_name">Enter your name:</label><br>
+            <input type="text" id="player_name" name="player_name" required><br><br>
+            <button type="submit" class="submit-button">Submit Score</button>
+        </form>
+
         <a href="{{ url_for('index') }}" class="restart-button">Play Again</a>
         <a href="{{ url_for('leaderboard') }}" class="leaderboard-button">View Leaderboard</a>
     </div>

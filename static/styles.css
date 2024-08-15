@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,13 +7,8 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #000; /* Set the body background color to black */
-}
-
-.header {
-    text-align: center;
-    padding: 20px;
-    background-color: #000; /* Dark background for the header */
-    color: #fff; /* White text for the header */
+    color: #fff; /* White text for all pages */
+    text-align: center; /* Center text for all pages */
 }
 
 h1 {
@@ -23,9 +19,18 @@ h1 {
 p {
     margin: 0;
     font-size: 18px;
-    color: #ccc; /* Light gray color for the score text */
+    color: #ccc; /* Light gray color for text */
 }
 
+/* Header Styles */
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #000; /* Dark background for the header */
+    color: #fff; /* White text for the header */
+}
+
+/* Game Page Styles */
 .movie-container {
     display: flex;
     justify-content: space-between;
@@ -61,4 +66,88 @@ p {
 
 .movie-item:hover .movie-img {
     opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+/* Starting and Game Over Page Styles */
+.container {
+    width: 80%;
+    max-width: 600px;
+    background-color: #222; /* Slightly lighter dark background */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    margin: auto; /* Center container vertically and horizontally */
+}
+
+/* Leaderboard List Styles */
+ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+}
+
+li {
+    margin: 10px 0; /* Add some spacing between list items */
+}
+
+a {
+    display: inline-block; /* Make the button only as wide as its content */
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #e74c3c; /* Red button */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Form Styles */
+form {
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.submit-button {
+    background-color: #e67e22; /* Orange button for submit */
+}
+
+.submit-button:hover {
+    background-color: #d35400; /* Darker orange on hover */
+}
+
+a:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+.start-button {
+    background-color: #2ecc71; /* Green button for start */
+}
+
+.start-button:hover {
+    background-color: #27ae60; /* Darker green on hover */
+}
+
+.restart-button {
+    background-color: #3498db; /* Blue button for restart */
+}
+
+.restart-button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+.leaderboard-button {
+    background-color: #9b59b6; /* Purple button for leaderboard */
+}
+
+.leaderboard-button:hover {
+    background-color: #8e44ad; /* Darker purple on hover */
 }
